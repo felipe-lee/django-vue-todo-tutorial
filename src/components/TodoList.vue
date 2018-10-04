@@ -3,28 +3,24 @@
 <template>
   <div id="todolist">
     <ul>
-      <li v-for="todo in todos">
-        <todo v-bind:todo="todo" v-bind:id="todo.id">
-
-        </todo>
-      </li>
+      <todo v-for="todo in todos"
+            v-bind:todo="todo"
+            v-bind:id="todo.id">
+      </todo>
     </ul>
   </div>
 </template>
 
 <script>
-  import Todo from './Todo.vue'
+  import Todo from './Todo.vue';
 
   export default {
     components: {
       Todo
     },
-    data: function () {
-      return {
-        todos: [
-          {text: 'Learn Vue'},
-          {text: 'Do hard things'}
-        ]
+    computed: {
+      todos () {
+        return this.$store.state.todos;
       }
     }
   }
