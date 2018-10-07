@@ -8,9 +8,11 @@ import store from './store/store.js';
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
-new Vue({
+const vm = new Vue({
   el: '#app',
   store: store,
   components: {App},
   render: h => h(App)
 });
+
+vm.$store.dispatch('getTodos');
